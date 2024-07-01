@@ -2,6 +2,14 @@
 
 # First, I will import the CSV file needed for this project
 import csv
+import os
+
+# Get the absolute path to the CSV file
+file_path = os.path.abspath('PyBank/Resources/budget_data.csv')
+# Define the directory and file name
+output_directory = "PyBank/Analysis"
+output_file = "financial_analysis.txt"
+full_file_path = os.path.join(output_directory, output_file)
 
 # Now, I will assign variables to store the necessary results
 total_of_months = 0
@@ -14,7 +22,7 @@ dates = []
 changes = []
 
 # Open the CSV file
-with open('budget_data.csv') as bank_data:
+with open(file_path) as bank_data:
     Bank_data_read = csv.reader(bank_data, delimiter=',')
     Titles = next(Bank_data_read)  # Skip the header row
     
@@ -64,5 +72,5 @@ print(data_analysis)
 
 # Export the analysis to a text file
 output_file = "financial_analysis.txt"
-with open(output_file, "w") as txt_file:
+with open(full_file_path, "w") as txt_file:
     txt_file.write(data_analysis)
